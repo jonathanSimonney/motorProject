@@ -1,7 +1,7 @@
 {
   "require": {
     "symfony/yaml": "^3.2",
-    "doctrine/dbal": "2.5.*"
+    "doctrine/orm": "^2.5"
   },
   "autoload": {
     "psr-0": {

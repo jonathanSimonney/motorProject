@@ -4,7 +4,7 @@
 namespace Motor;
 
 
-abstract class Board
+abstract class Graph
 {
 
 }
