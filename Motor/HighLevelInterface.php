@@ -20,7 +20,7 @@ class HighLevelInterface
      */
     private function setEntityManager($publicConfig, $privateConfig)
     {
-        $paths = $publicConfig['game_folder_path'];
+        $paths = array($publicConfig['game_folder_path']);
         $isDevMode = false;
 
 // the connection configuration
