@@ -32,4 +32,13 @@ class HighLevelInterface
 
         $this->entityManager = $entityManager;
     }
+
+    public function executeAction(Player $player, Action $action, $additionalParams=null)
+    {
+        if (\in_array($action, $player->getAvailableActions(), true)){
+            $action->execute($player, $additionalParams);
+        }else{
+            throw new \InvalidArgumentException('This action can\'t be done by this player!');
+        }
+    }
 }
