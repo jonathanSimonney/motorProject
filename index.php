@@ -8,14 +8,3 @@ $privateConfig = Yaml::parse(file_get_contents(__DIR__.'/config/private.yml'));
 
 //we give our orm its configuration AND its information to connect to the database.
 $boardGameMotorInterface = new \Motor\HighLevelInterface($publicConfig['motor_config'], $privateConfig['db_config']);
-
-$test = new \Motor\Stack();
-
-$test->setStackContent(['toto', 'titi', 'riri', 'fifi', 'lolo']);
-$test->shuffleStack();
-
-var_dump($test->getStackContent());
-var_dump($test->drawCard());
-$test->shuffleStack();
-
-var_dump($test->getStackContent());
