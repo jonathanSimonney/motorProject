@@ -9,7 +9,7 @@ class GraphCase
 
     public function removeEdge(GraphBridge $edge)
     {
-        $this->edges = array_diff($this->edges, [$edge]);
+        $this->edges = array_values(array_diff($this->edges, [$edge]));
     }
 
     public function addEdge(GraphBridge $edge)

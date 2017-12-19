@@ -16,7 +16,7 @@ class Player
 
     public function removeAvailableAction(Action $action)
     {
-        $this->availableActions = array_diff($this->availableActions, [$action]);
+        $this->availableActions = array_values(array_diff($this->availableActions, [$action]));
     }
 
     public function addAvailableAction(Action $action)

@@ -20,7 +20,7 @@ class Graph
 
     public function removeNode(GraphCase $node)
     {
-        $this->arrayNodes = array_diff($this->arrayNodes, [$node]);
+        $this->arrayNodes = array_values(array_diff($this->arrayNodes, [$node]));
     }
 
     public function addEdge(GraphBridge $edge)
