@@ -10,14 +10,30 @@ class Stack
      */
     private $stackContent;
 
+    private $type;
+
+    public function __construct(String $stackType)
+    {
+        $this->type = $stackType;
+    }
+
+    protected function checkCardIsValid($card)
+    {
+        if (!is_a($card, $this->type)){
+            throw new \InvalidArgumentException('You need to pass a card of type '.$this->type.'in this stack.');
+        }
+    }
+
     public function removeCard($card)
     {
+        $this->checkCardIsValid($card);
         $this->stackContent = array_values(array_diff($this->stackContent, [$card]));
     }
 
     public function addCard($card)
     {
-        $this->stackContent[] = $card;
+        $this->checkCardIsValid($card);
+        throw new \InvalidArgumentException('You need to pass a card of type '.$this->type.'in this stack.');
     }
 
     /**
@@ -33,6 +49,9 @@ class Stack
      */
     public function setStackContent(array $stackContent)
     {
+        array_walk($stackContent, function ($arrayItem){
+            $this->checkCardIsValid($arrayItem);
+        });
         $this->stackContent = $stackContent;
     }
 
