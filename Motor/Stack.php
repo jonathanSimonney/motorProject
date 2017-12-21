@@ -8,9 +8,9 @@ class Stack
     /**
      * @var array
      */
-    private $stackContent;
+    protected $stackContent;
 
-    private $type;
+    protected $type;
 
     public function __construct(String $stackType)
     {
@@ -55,11 +55,30 @@ class Stack
         $this->stackContent = $stackContent;
     }
 
-    public function drawCard()
+    //if you pass false, the card will be readded to the bottom of the stack!
+    public function drawCard(bool $discardCard=true)
     {
         $ret = $this->stackContent[0];
 
         $this->removeCard($ret);
+        if (!$discardCard){
+            $this->addCard($ret);
+        }
+
+        return $ret;
+    }
+
+    public function drawFromBottom(bool $discardCard=true)
+    {
+        $ret = end($this->stackContent);
+
+        reset($this->stackContent);
+
+        $this->removeCard($ret);
+        if (!$discardCard){
+            $this->addCard($ret);
+        }
+
         return $ret;
     }
 

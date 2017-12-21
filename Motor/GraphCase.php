@@ -5,7 +5,7 @@ namespace Motor;
 
 class GraphCase
 {
-    private $edges;
+    protected $edges;
 
     public function removeEdge(GraphBridge $edge)
     {

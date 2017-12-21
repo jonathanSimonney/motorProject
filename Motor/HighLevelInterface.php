@@ -7,24 +7,27 @@ use Doctrine\ORM\EntityManager;
 
 class HighLevelInterface
 {
-    private $entityManager;
+    protected $entityManager;
+    protected $gameTurnManager;
+    protected $gameFolder;
 
-    public function __construct($publicConfig, $privateConfig){
-        $this->setEntityManager($publicConfig, $privateConfig);
+    public function __construct($publicConfig, $protectedConfig){
+        $this->setEntityManager($publicConfig, $protectedConfig);
+        $this->gameFolder = $publicConfig['game_folder_path'];
     }
 
     /**
      * @param $publicConfig
-     * @param $privateConfig
+     * @param $protectedConfig
      * @throws \Doctrine\ORM\ORMException
      */
-    private function setEntityManager($publicConfig, $privateConfig)
+    protected function setEntityManager($publicConfig, $protectedConfig)
     {
         $paths = array($publicConfig['game_folder_path']);
         $isDevMode = false;
 
 // the connection configuration
-        $dbParams = $privateConfig;
+        $dbParams = $protectedConfig;
         $dbParams['driver'] = 'pdo_mysql';
 
         $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
@@ -40,5 +43,12 @@ class HighLevelInterface
         }else{
             throw new \InvalidArgumentException('This action can\'t be done by this player!');
         }
+    }
+
+    public function setupNewGame(GameTurnManager $gameTurnManager)
+    {
+        $this->gameTurnManager = $gameTurnManager;
+
+        $gameTurnManager->setInitialTurnOrder();
     }
 }

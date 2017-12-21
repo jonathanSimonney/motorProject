@@ -6,7 +6,7 @@ namespace Motor;
 
 class Graph
 {
-    private $arrayNodes;
+    protected $arrayNodes;
 
     public function __construct()
     {

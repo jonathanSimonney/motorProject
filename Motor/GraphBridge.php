@@ -5,9 +5,9 @@ namespace Motor;
 
 class GraphBridge
 {
-    private $node1;
-    private $node2;
-    private $direction;
+    protected $node1;
+    protected $node2;
+    protected $direction;
 
     public function __construct(GraphCase $node1, GraphCase $node2, String $direction)
     {
@@ -17,7 +17,7 @@ class GraphBridge
         $this->checkDirectionIsValid();
     }
 
-    private function checkDirectionIsValid()
+    protected function checkDirectionIsValid()
     {
         if ($this->direction !== 'bidirectional' && $this->direction !== '1To2'&& $this->direction !== '2To1'){
             throw new \InvalidArgumentException('The direction argument must be one of : \'bidirectional\', \'1To2\', \'2To1\'.');

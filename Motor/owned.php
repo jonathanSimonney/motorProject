@@ -6,7 +6,7 @@ namespace Motor;
 
 trait owned
 {
-    private $owner;
+    protected $owner;
 
     public function getOwner()
     {

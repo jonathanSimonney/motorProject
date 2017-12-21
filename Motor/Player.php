@@ -12,7 +12,7 @@ class Player
      * @param OneToMany Action
      * @sendTo:everyone
      */
-    private $availableActions;
+    protected $availableActions;
 
     public function removeAvailableAction(Action $action)
     {
