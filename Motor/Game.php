@@ -9,8 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="game")
  */
-class Game
+abstract class Game
 {
+    /**
+     * @var GameTurnManager
+     *
+     * @ORM\OneToOne(targetEntity="GameTurnManager")
+     * @sendTo:everyone
+     */
+    private $turnManager;
+
     /**
      * @var int
      *
@@ -36,4 +44,19 @@ class Game
         $this->gameId = $gameId;
     }
 
+    /**
+     * @return GameTurnManager
+     */
+    public function getTurnManager(): GameTurnManager
+    {
+        return $this->turnManager;
+    }
+
+    /**
+     * @param GameTurnManager $turnManager
+     */
+    public function setTurnManager(GameTurnManager $turnManager): void
+    {
+        $this->turnManager = $turnManager;
+    }
 }

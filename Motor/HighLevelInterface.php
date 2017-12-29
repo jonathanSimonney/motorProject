@@ -52,9 +52,8 @@ class HighLevelInterface
         $gameTurnManager->setInitialTurnOrder();
     }
 
-    public function saveGame(EntityManager $entityManager, $gameId)
+    public function saveGame(EntityManager $entityManager, Game $game, $gameId)
     {
-        $game = new Game();
         $game->setGameId($gameId);
         $entityManager->persist($game);
         $entityManager->flush();
