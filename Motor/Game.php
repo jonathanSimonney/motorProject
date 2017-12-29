@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Game extends BaseDoctrineClass
 {
+    use Savable;
+
     /**
      * @var GameTurnManager
      *

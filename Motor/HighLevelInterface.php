@@ -59,11 +59,14 @@ class HighLevelInterface extends BaseDoctrineClass
         $this->currentGame = $potentialNewGame;
     }
 
-    public function saveGame($gameId)
+    public function saveGame($gameName)
     {
-        $this->currentGame->setGameId($gameId);
+        $this->currentGame->setSaveName($gameName);
+        $this->currentGame->setSaveDate(new \DateTime());
         $this->entityManager->persist($this->currentGame);
         $this->entityManager->flush();
+
+        return $this->currentGame->getId();
     }
 
     public function loadGame($gameId, $gameEntity)

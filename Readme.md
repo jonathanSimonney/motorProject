@@ -36,6 +36,6 @@ corresponding entities given in the Motor folder.
   
 #TODO
 - make sure the stack entity can be saved to doctrine. (probably still not the case)
-- make a "baseDoctrineClass" that all entity to be saved in doctrine will expand (for the id)
+- make sure the graph can be saved to db, probably will need to add the good annotations for it.
 - make the "sendDataToFront" method
 - make sure Graph work well, probably will need to pass by reference instead of copy.
