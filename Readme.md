@@ -29,7 +29,13 @@ developer files for the game, which will need to extend the Motor classes)
 #use
 
 The motor itself is in the Motor folder.  
-The test folder contains an example of how to use the motor with a game of 3 small horses.  
+The test folder will maybe one time contain an example of how to use the motor with a game of 3 small horses.  
 As a reminder, please note that you'll need to make sure all your entities extend the 
 corresponding entities given in the Motor folder.
   
+  
+#TODO
+- make sure the stack entity can be saved to doctrine. (probably still not the case)
+- make a "baseDoctrineClass" that all entity to be saved in doctrine will expand (for the id)
+- make the "sendDataToFront" method
+- make sure Graph work well, probably will need to pass by reference instead of copy.

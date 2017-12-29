@@ -8,8 +8,12 @@ use Doctrine\ORM\EntityManager;
 class HighLevelInterface
 {
     protected $entityManager;
-    protected $gameTurnManager;
     protected $gameFolder;
+
+    /**
+     * @var Game
+     */
+    protected $currentGame;
 
     public function __construct($publicConfig, $protectedConfig){
         $this->setEntityManager($publicConfig, $protectedConfig);
@@ -45,24 +49,29 @@ class HighLevelInterface
         }
     }
 
-    public function setupNewGame(GameTurnManager $gameTurnManager)
+    public function setupNewGame(GameTurnManager $gameTurnManager, $gameEntity)
     {
-        $this->gameTurnManager = $gameTurnManager;
-
         $gameTurnManager->setInitialTurnOrder();
+        $potentialNewGame = new $gameEntity($gameTurnManager);
+        if (!is_a($potentialNewGame, Game::class)){
+            throw new \InvalidArgumentException('your game class must extend gameEntity.');
+        }
+        $this->currentGame = $potentialNewGame;
     }
 
-    public function saveGame(EntityManager $entityManager, Game $game, $gameId)
+    public function saveGame($gameId)
     {
-        $game->setGameId($gameId);
-        $entityManager->persist($game);
-        $entityManager->flush();
+        $this->currentGame->setGameId($gameId);
+        $this->entityManager->persist($this->currentGame);
+        $this->entityManager->flush();
     }
 
-    public function loadGame(EntityManager $entityManager, $gameId)
+    public function loadGame($gameId, $gameEntity)
     {
-        $loadGame = $entityManager->getRepository(Game::class);
-        $loadGame->find($gameId);
-        return $loadGame;
+        $loadedGame = $this->entityManager->getRepository($gameEntity)->find($gameId);
+        if (!is_a($loadedGame, Game::class)){
+            throw new \InvalidArgumentException('your game class must extend gameEntity.');
+        }
+        $this->currentGame = $loadedGame;
     }
 }

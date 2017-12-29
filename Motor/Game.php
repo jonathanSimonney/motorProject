@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="game")
  */
-abstract class Game
+class Game
 {
     /**
      * @var GameTurnManager
@@ -27,6 +27,11 @@ abstract class Game
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $gameId;
+
+    public function __construct(GameTurnManager $gameTurnManager)
+    {
+        $this->turnManager = $gameTurnManager;
+    }
 
     /**
      * @return int
