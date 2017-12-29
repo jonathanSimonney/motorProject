@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="game")
  */
-class Game
+class Game extends BaseDoctrineClass
 {
     /**
      * @var GameTurnManager
@@ -19,34 +19,9 @@ class Game
      */
     private $turnManager;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $gameId;
-
     public function __construct(GameTurnManager $gameTurnManager)
     {
         $this->turnManager = $gameTurnManager;
-    }
-
-    /**
-     * @return int
-     */
-    public function getGameId()
-    {
-        return $this->gameId;
-    }
-
-    /**
-     * @param int $gameId
-     */
-    public function setGameId($gameId)
-    {
-        $this->gameId = $gameId;
     }
 
     /**

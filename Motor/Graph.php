@@ -4,7 +4,7 @@
 namespace Motor;
 
 
-class Graph
+class Graph extends BaseDoctrineClass
 {
     protected $arrayNodes;
 

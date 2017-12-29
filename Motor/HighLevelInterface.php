@@ -5,7 +5,7 @@ namespace Motor;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-class HighLevelInterface
+class HighLevelInterface extends BaseDoctrineClass
 {
     protected $entityManager;
     protected $gameFolder;

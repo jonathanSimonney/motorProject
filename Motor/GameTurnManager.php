@@ -5,7 +5,7 @@ namespace Motor;
 
 use Doctrine\ORM\Mapping\OneToMany;
 
-class GameTurnManager
+class GameTurnManager extends BaseDoctrineClass
 {
     /**
      * @var Stack

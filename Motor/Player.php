@@ -5,7 +5,7 @@ namespace Motor;
 
 use Doctrine\ORM\Mapping\OneToMany;
 
-class Player
+class Player extends BaseDoctrineClass
 {
     /**
      * @var array[Action]

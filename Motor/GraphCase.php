@@ -3,7 +3,7 @@
 namespace Motor;
 
 
-class GraphCase
+class GraphCase extends BaseDoctrineClass
 {
     protected $edges;
 

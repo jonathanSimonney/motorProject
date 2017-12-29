@@ -3,7 +3,7 @@
 namespace Motor;
 
 
-class GraphBridge
+class GraphBridge extends BaseDoctrineClass
 {
     protected $node1;
     protected $node2;
