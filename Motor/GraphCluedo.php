@@ -12,8 +12,24 @@ namespace Motor;
 class GraphCluedo
 {
     protected $arrayNodes;
+    protected $position;
+    protected $edge;
 
-    /** use implode to create multidimensional array of all nodes, then iterate to change node */
-    /** delimit each node with an edge at first value, but it won't work for corridor, declare them manually ? */
+    public function changeNode($arrayNodes, $edge, $position) {
+
+        $arrayNodes = array{
+            nodes1,             /** the variable ArrayNodes is a multidimensional array containing all the arrays nodes */
+            nodes2
+        };
+        $edge = count($arrayNodes[0]) - 1;      /** all rooms in the Cluedo graph have doors on the first case,
+                                                * so all their nodes must have edge at the first value */
+        if ($position == $edge)
+        {
+            $position = $arrayNodes[1][0];
+        }
+    return $position;
+}
+
+
 
 }
