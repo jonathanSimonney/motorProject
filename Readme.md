@@ -38,5 +38,6 @@ corresponding entities given in the Motor folder.
 - make sure the stack entity can be saved to doctrine. (probably still not the case)
 - make sure the graph can be saved to db, probably will need to add the good annotations for it.
 - make the "sendDataToFront" method
-- make sure Graph work well, probably will need to pass by reference instead of copy.
-- redo the graph (to be confirmed but I don't understand graph made on branch graphTest...)
+- redo the graph (to be confirmed but I don't understand graph made on branch graphTest...if 
+it has to be done, probably a trait Movable and a movementManager could be a good idea (possibly with an interface for the 
+Movement manager?))

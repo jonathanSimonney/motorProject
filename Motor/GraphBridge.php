@@ -5,11 +5,11 @@ namespace Motor;
 
 class GraphBridge extends BaseDoctrineClass
 {
-    protected $node1;
-    protected $node2;
+    public $node1;
+    public $node2;
     protected $direction;
 
-    public function __construct(GraphCase $node1, GraphCase $node2, String $direction)
+    public function __construct(GraphCase $node1, GraphCase $node2, String $direction='bidirectional')
     {
         $this->node1 = $node1;
         $this->node2 = $node2;
@@ -35,7 +35,7 @@ class GraphBridge extends BaseDoctrineClass
     /**
      * @return GraphCase
      */
-    public function getNode1()
+    public function &getNode1()
     {
         return $this->node1;
     }
@@ -43,12 +43,12 @@ class GraphBridge extends BaseDoctrineClass
     /**
      * @return GraphCase
      */
-    public function getNode2()
+    public function &getNode2()
     {
         return $this->node2;
     }
 
-    public function getOtherNode(GraphCase $oneNode)
+    public function &getOtherNode(GraphCase $oneNode)
     {
         if ($this->node1 === $oneNode)
         {
