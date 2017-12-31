@@ -39,3 +39,4 @@ corresponding entities given in the Motor folder.
 - make sure the graph can be saved to db, probably will need to add the good annotations for it.
 - make the "sendDataToFront" method
 - make sure Graph work well, probably will need to pass by reference instead of copy.
+- redo the graph (to be confirmed but I don't understand graph made on branch graphTest...)

@@ -49,7 +49,7 @@ class GameTurnManager extends BaseDoctrineClass
     public function setInitialTurnOrder()
     {
         $this->turnOrder->shuffleStack();
-        $this->currentPlayer = $this->turnOrder->drawCard(false);
+        $this->currentPlayer = &$this->turnOrder->drawCard(false);
         $this->onTurnBegin();
 
         $this->onPlayerTurnBegin($this->currentPlayer);
@@ -57,7 +57,7 @@ class GameTurnManager extends BaseDoctrineClass
 
     public function doNextPlayerTurn()
     {
-        $nextPlayer = $this->turnOrder->drawCard(false);
+        $nextPlayer = &$this->turnOrder->drawCard(false);
 
         $this->onPlayerTurnEnd($this->currentPlayer, $nextPlayer);
 
