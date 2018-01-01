@@ -29,7 +29,15 @@ developer files for the game, which will need to extend the Motor classes)
 #use
 
 The motor itself is in the Motor folder.  
-The test folder contains an example of how to use the motor with a game of 3 small horses.  
+The test folder will maybe one time contain an example of how to use the motor with a game of 3 small horses.  
 As a reminder, please note that you'll need to make sure all your entities extend the 
 corresponding entities given in the Motor folder.
   
+  
+#TODO
+- make sure the stack entity can be saved to doctrine. (probably still not the case)
+- make sure the graph can be saved to db, probably will need to add the good annotations for it.
+- make the "sendDataToFront" method
+- redo the graph (to be confirmed but I don't understand graph made on branch graphTest...if 
+it has to be done, probably a trait Movable and a movementManager could be a good idea (possibly with an interface for the 
+Movement manager?))

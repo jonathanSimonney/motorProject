@@ -5,7 +5,7 @@ namespace Motor;
 
 use Doctrine\ORM\Mapping\OneToMany;
 
-class GameTurnManager
+class GameTurnManager extends BaseDoctrineClass
 {
     /**
      * @var Stack
@@ -49,7 +49,7 @@ class GameTurnManager
     public function setInitialTurnOrder()
     {
         $this->turnOrder->shuffleStack();
-        $this->currentPlayer = $this->turnOrder->drawCard(false);
+        $this->currentPlayer = &$this->turnOrder->drawCard(false);
         $this->onTurnBegin();
 
         $this->onPlayerTurnBegin($this->currentPlayer);
@@ -57,7 +57,7 @@ class GameTurnManager
 
     public function doNextPlayerTurn()
     {
-        $nextPlayer = $this->turnOrder->drawCard(false);
+        $nextPlayer = &$this->turnOrder->drawCard(false);
 
         $this->onPlayerTurnEnd($this->currentPlayer, $nextPlayer);
 

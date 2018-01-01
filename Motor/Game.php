@@ -9,31 +9,36 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="game")
  */
-class Game
+class Game extends BaseDoctrineClass
 {
+    use Savable;
+
     /**
-     * @var int
+     * @var GameTurnManager
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToOne(targetEntity="GameTurnManager")
+     * @sendTo:everyone
      */
-    private $gameId;
+    private $turnManager;
 
-    /**
-     * @return int
-     */
-    public function getGameId()
+    public function __construct(GameTurnManager $gameTurnManager)
     {
-        return $this->gameId;
+        $this->turnManager = $gameTurnManager;
     }
 
     /**
-     * @param int $gameId
+     * @return GameTurnManager
      */
-    public function setGameId($gameId)
+    public function getTurnManager(): GameTurnManager
     {
-        $this->gameId = $gameId;
+        return $this->turnManager;
     }
 
+    /**
+     * @param GameTurnManager $turnManager
+     */
+    public function setTurnManager(GameTurnManager $turnManager): void
+    {
+        $this->turnManager = $turnManager;
+    }
 }

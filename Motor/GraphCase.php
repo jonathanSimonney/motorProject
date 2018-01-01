@@ -3,9 +3,10 @@
 namespace Motor;
 
 
-class GraphCase
+class GraphCase extends BaseDoctrineClass
 {
     protected $edges;
+    protected $nodeId;
 
     public function removeEdge(GraphBridge $edge)
     {
@@ -32,9 +33,26 @@ class GraphCase
         foreach ($this->edges as $edge)
         {
             /** @var $edge GraphBridge */
-            $ret[] = $edge->getOtherNode($this);
+            $copy = &$edge->getOtherNode($this);
+            $ret[] = clone $copy;
         }
 
         return $ret;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNodeId()
+    {
+        return $this->nodeId;
+    }
+
+    /**
+     * @param mixed $nodeId
+     */
+    public function setNodeId($nodeId): void
+    {
+        $this->nodeId = $nodeId;
     }
 }

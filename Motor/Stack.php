@@ -56,7 +56,7 @@ class Stack
     }
 
     //if you pass false, the card will be readded to the bottom of the stack!
-    public function drawCard(bool $discardCard=true)
+    public function &drawCard(bool $discardCard=true)
     {
         $ret = $this->stackContent[0];
 
@@ -68,7 +68,7 @@ class Stack
         return $ret;
     }
 
-    public function drawFromBottom(bool $discardCard=true)
+    public function &drawFromBottom(bool $discardCard=true)
     {
         $ret = end($this->stackContent);
 
